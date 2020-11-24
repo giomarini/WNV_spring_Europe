@@ -4,6 +4,8 @@ Files:
 
 -dataset_for_analysis: dataset for the analysis, with already merged WNV data and processed temperature covariates;
 
+-tab_summerLST: dataset with summer temperature covariates (for "with summer LST" analysis);
+
 -script_for_analysis: R code to carry out the analysis and make the plots;
 
 -Europe_nuts: this folder contains the shapefiles (publicly available from Eurostat https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts) to create the map of Europe.
