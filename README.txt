@@ -1,1 +1,0 @@
-In questa cartella ci sono le ultime versioni dei file da mettere nella repository pubblica su github
