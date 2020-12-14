@@ -13,7 +13,7 @@ library(sf)
 library(RColorBrewer)
 library(lmtest)
 
-to_plot=T #if TRUE, plots are saved in the specified output file
+to_plot=F #if TRUE, plots are saved in the specified output file
 
 #### reading data #####
 ### the dataset was made merging the ECDC datasets
@@ -405,8 +405,8 @@ p1 <- newdb %>% transform(WNV_before = case_when(WNV_before== "1"~"Cases in prev
   
 
 p3 <- newdb %>% transform(WNV_before = case_when(WNV_before== "1"~"Cases in previous year",
-                                                 WNV_before == "0"~"No Cases in previous year",
-                                                 WNV_before== "NR"~"Cases in previous year not reported" ))%>%
+                                                 WNV_before == "0"~"Cases in previous year not reported",
+                                                 WNV_before== "NR"~"Cases in previous years not recorded" ))%>%
   ggplot(.,aes(x=AVG_2003_2010,y=prob_zero_both,col=WNV_before))+geom_line(lwd=2)+theme_bw()+
   ylab(expression("P(H"["y,i"]*"=0)")) + xlab(expression(hat("T")))+
   scale_x_continuous(breaks = seq(tmin,tmax,2))+
@@ -436,8 +436,8 @@ newdb$mu   <- exp(Xcount %*% betacount)
 newdb$mean <- (1-newdb$prob_zero)*newdb$mu
 
 p2 <- newdb %>% transform(WNV_before = case_when(WNV_before== "1"~"Cases in previous year",
-                                                 WNV_before == "0"~"No Cases in previous year",
-                                                 WNV_before== "NR"~"Cases in previous year not reported" ))%>%
+                                                 WNV_before == "0"~"Cases in previous year not reported",
+                                                 WNV_before== "NR"~"Cases in previous years not recorded" ))%>%
   ggplot(.,aes(x=STD_ANOMALY,y=mean,col=WNV_before))+geom_line(lwd=2)+theme_bw()+
   ylab(expression("E(H"["y,i"]*")")) + 
   scale_x_continuous(breaks = seq(anom_min,anom_max,2))+
@@ -452,8 +452,8 @@ newdb$p0count <- dnbinom(0,size = best_model2$theta, mu = newdb$mu) #probability
 newdb$prob_zero_both=newdb$prob_zero+(1-newdb$prob_zero)*newdb$p0count
 
 p4 <- newdb %>% transform(WNV_before = case_when(WNV_before== "1"~"Cases in previous year",
-                                                 WNV_before == "0"~"No Cases in previous year",
-                                                 WNV_before== "NR"~"Cases in previous year not reported" ))%>%
+                                                 WNV_before == "0"~"Cases in previous year not reported",
+                                                 WNV_before== "NR"~"Cases in previous years not recorded" ))%>%
   ggplot(.,aes(x=STD_ANOMALY,y=prob_zero_both,col=WNV_before))+geom_line(lwd=2)+theme_bw()+
   ylab(expression("P(H"["y,i"]*"=0)")) + 
   scale_x_continuous(breaks = seq(anom_min,anom_max,2))+
