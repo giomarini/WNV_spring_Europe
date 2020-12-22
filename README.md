@@ -1,4 +1,4 @@
-Script and files to reproduce the analysis presented in XXX.
+Script and files to reproduce the analysis presented in "Spring temperature shapes West Nile virus transmission in Europe" (https://doi.org/10.1016/j.actatropica.2020.105796).
 
 Files:
 
@@ -8,7 +8,9 @@ Files:
 
 -script_for_analysis: R code to carry out the analysis and make the plots;
 
--Europe_nuts: this folder contains the shapefiles (publicly available from Eurostat https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts) to create the map of Europe.
+-Europe_nuts: this folder contains the shapefiles (publicly available from Eurostat https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts) to create the map of Europe;
+
+-Marini WNV Europe: preprint of the study.
 
 Original ECDC datasets were retrieved on Febrary 18, 2020 from the following URLs:
 
